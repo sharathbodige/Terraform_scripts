@@ -21,7 +21,11 @@ resource "aws_subnet" "mysub" {
 
   vpc_id            = aws_vpc.myvpc.id
   availability_zone = var.avail_zone
-  cidr_block        = var.sub_cidr_range
+  cidr_block        = var.sub1_cidr_range
+
+  tags = {
+    Name = "mysubnet"
+  }
 
   map_public_ip_on_launch = true
 
@@ -64,6 +68,7 @@ resource "aws_route_table_association" "mysub_assoc" {
 #instance ---------------------------------------------
 resource "aws_instance" "myec2" {
 
+  count = 1
   ami           = var.image_name
   instance_type = var.inst_type
   key_name      = var.keyname

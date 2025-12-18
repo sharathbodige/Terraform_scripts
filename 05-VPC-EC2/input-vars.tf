@@ -10,12 +10,9 @@ variable "avail_zone" {
 }
 
 
-variable "sub_cidr_range" {
+variable "sub1_cidr_range" {
   default = "10.0.0.0/18"
 }
-
-
-
 
 
 variable "image_name" {
